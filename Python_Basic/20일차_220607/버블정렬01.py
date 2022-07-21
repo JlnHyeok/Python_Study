@@ -1,4 +1,4 @@
-### 버블 정렬의 구현
+### 버블 정렬의 구현hh
 
 def bubbleSort(ary):
     n = len(ary)
