@@ -31,8 +31,11 @@ print(f'스택 s의 상태는 {s.items}이다')
 
 print(f'스택 s의 젤 위의 값은 {s.top()}이다')
 
-print(f'스택 s의 길이는 {len(s.items)}이다')
+print(f'스택 s의 길이는 {len(s)}이다')
 
 print(f'{s.items.pop()}를 꺼낸다')
 
 print(f's에 남은 값은 {s.items}이다.')
+
+print(f'스택 s의 길이는 {len(s)}이다')
+
