@@ -31,3 +31,5 @@ print(N-cnt)
 # print(sorted(a,key=a.find)) # 입력된 문자열 순으로 정렬인듯 하다
 #
 # print(list(a)==sorted(a,key=a.find))
+#
+# print(a.index) <-- a.find 랑 같은결과
