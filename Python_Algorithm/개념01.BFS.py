@@ -11,12 +11,17 @@
 
 3. 자료구조
 - 그래프 전체 지도 int[][]
-- 방뭉 : bool[][]
+- 방문 : bool[][]
 - Queue(BFS)
 '''
 # 입출력 속도를 빠르게 해주는 코드 (습관화 하자)
-import sys
-input = sys.stdin.readline
-# n : y축 // m : x 축
-n,m=map(int,input().split())
-map = [list(map(int, input().split())) for _ in range(n)]
+# import sys
+# input = sys.stdin.readline
+# # n : y축 // m : x 축
+# n,m=map(int,input().split())
+# map = [list(map(int, input().split())) for _ in range(n)]
+
+dic = {1 : '가', 2 : '나', 3 : '다'}
+
+for i in dic:
+    print(dic[i])
