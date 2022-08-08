@@ -4,10 +4,9 @@ book = [None for _ in range(n)]
 for i in range(n):
     book[i] = input()
 book = sorted(book)
-book.append(None)
 cnt_list = [0 for _ in range(len(book))]
 i = 0
-while book[i]:
+while i<len(book)-1:
     cnt = book.count(book[i])
     cnt_list[i]=(cnt)
     i += cnt
