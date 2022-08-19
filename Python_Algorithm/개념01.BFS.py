@@ -7,7 +7,7 @@
 - BFS : O(V+E)
 - V : 500 x 500 (최대)
 - E : V X 4 (넉넉잡아서) = 4 * 500 * 500
-- V+E = 약 100만 < 2억 ==> 가능
+- V+E = 약 100만 < (1초연산)2억 ==> 가능
 
 3. 자료구조
 - 그래프 전체 지도 int[][]
@@ -15,13 +15,44 @@
 - Queue(BFS)
 '''
 # 입출력 속도를 빠르게 해주는 코드 (습관화 하자)
-# import sys
-# input = sys.stdin.readline
-# # n : y축 // m : x 축
-# n,m=map(int,input().split())
-# map = [list(map(int, input().split())) for _ in range(n)]
+import sys
+input = sys.stdin.readline
+# n : y축 // m : x 축
+n,m=map(int,input().split())
+map = [list(map(int, input().split())) for _ in range(n)]
+chk = [[False]*m for _ in range(n)]
 
-dic = {1 : '가', 2 : '나', 3 : '다'}
+dy=[0,1,0,-1]
+dx=[1,0,-1,0]
+# (1,0) 오른쪽 , (0,1) 아래쪽 , (-1,0) 왼쪽 , (0,-1) 위쪽 방향
 
-for i in dic:
-    print(dic[i])
+def bfs(y,x):
+    rs = 1 # (초기 크기 = 1)
+    q = [(y,x)]
+    while q:
+        ey, ex = q.pop()
+        for k in range(4):  # 4방향에 대해    
+            ny = ey + dy[k] # y,x축 각각 이동해서 확인
+            nx = ex + dx[k]
+            if 0<=ny<n and 0<=nx<m: # 사이즈를 넘어가지 않는 범위에서
+                if map[ny][nx] == 1 and chk[ny][nx] == False:
+                    rs+=1
+                    chk[ny][nx] = True
+                    q.append((ny,nx))
+    return rs
+
+cnt=0
+maxv = 0
+
+for j in range(n):  # 2중for문은 y축부터 돌도록 하자
+    for i in range(m):
+        if map[j][i] == 1 and chk[j][i] == False:
+            chk[j][i] = True
+            # 전체 그림 갯수 +1
+            cnt+=1
+            # BFS 를 통해 그림의 크기를 구해주고
+            # 최대값 갱신
+            maxv = max(maxv,bfs(j,i))
+            
+print(cnt)
+print(maxv)
